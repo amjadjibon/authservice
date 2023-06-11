@@ -1,23 +1,14 @@
 package repository
 
 import (
-	"time"
+	"authservice/model"
 )
 
-type User struct {
-	Id        int64
-	Username  string
-	Password  string
-	Email     string
-	CreatedAt time.Time
-	UpdatedAt time.Time
-}
-
 type IRepository interface {
-	InsertUser(user User) error
-	GetUserByUsername(username string) (User, error)
-	GetUserByEmail(email string) (User, error)
-	GetUserById(id int64) (User, error)
+	InsertUser(user *model.User) error
+	GetUserByUsername(username string) (*model.User, error)
+	GetUserByEmail(email string) (*model.User, error)
+	GetUserById(id int64) (*model.User, error)
 	DeleteUserById(id int64) error
 }
 

@@ -4,42 +4,37 @@ import (
 	"database/sql"
 
 	_ "github.com/lib/pq"
+
+	"authservice/database"
+	"authservice/model"
 )
 
 type PostgresRepository struct {
 	db *sql.DB
 }
 
-func getDB(dsn string) *sql.DB {
-	db, err := sql.Open("postgres", dsn)
-	if err != nil {
-		panic(err)
-	}
-	return db
-}
-
 func NewPostgresRepository(dsn string) IRepository {
 	return &PostgresRepository{
-		db: getDB(dsn),
+		db: database.GetDB(dsn),
 	}
 }
 
-func (p PostgresRepository) InsertUser(user User) error {
+func (p PostgresRepository) InsertUser(user *model.User) error {
 	// TODO implement me
 	panic("implement me")
 }
 
-func (p PostgresRepository) GetUserByUsername(username string) (User, error) {
+func (p PostgresRepository) GetUserByUsername(username string) (*model.User, error) {
 	// TODO implement me
 	panic("implement me")
 }
 
-func (p PostgresRepository) GetUserByEmail(email string) (User, error) {
+func (p PostgresRepository) GetUserByEmail(email string) (*model.User, error) {
 	// TODO implement me
 	panic("implement me")
 }
 
-func (p PostgresRepository) GetUserById(id int64) (User, error) {
+func (p PostgresRepository) GetUserById(id int64) (*model.User, error) {
 	// TODO implement me
 	panic("implement me")
 }
