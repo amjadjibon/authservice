@@ -6,21 +6,19 @@ import (
 )
 
 func SendEmail(
-	from string,
-	to []string,
-	cc []string,
-	bcc []string,
+	to string,
 	subject string,
 	body string,
-	attachment string,
 ) error {
-	host := "smtp.gmail.com"
-	port := "587"
+	from := ""
+	password := ""
+	host := ""
+	port := ""
 	subject = "Subject: " + subject + "\n"
 	msg := []byte(subject + body)
 	addr := host + ":" + port
-	auth := smtp.PlainAuth("", from, "password", host)
-	return smtp.SendMail(addr, auth, from, to, msg)
+	auth := smtp.PlainAuth("", from, password, host)
+	return smtp.SendMail(addr, auth, from, []string{to}, msg)
 }
 
 func ValidEmail(email string) (string, bool) {

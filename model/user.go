@@ -12,3 +12,9 @@ type User struct {
 	CreatedAt time.Time
 	UpdatedAt time.Time
 }
+
+type Verification struct {
+	Id     int64
+	UserId int64
+	Code   string
+}

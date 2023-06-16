@@ -10,6 +10,7 @@ type IRepository interface {
 	GetUserByEmail(email string) (*model.User, error)
 	GetUserById(id int64) (*model.User, error)
 	DeleteUserById(id int64) error
+	InsertVerification(verification *model.Verification) error
 }
 
 func FactoryRepository(store, dsn string) IRepository {
